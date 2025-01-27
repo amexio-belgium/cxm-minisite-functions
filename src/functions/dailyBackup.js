@@ -10,7 +10,7 @@ const { app } = require("@azure/functions");
 
 app.timer("dailyBackup", {
   schedule: "0 0 0 * * *",
-  handler: async (myTimer, context) => {
+  handler: async () => {
     const DATASET = process.env.SANITY_STUDIO_DATASET;
 
     const sanityClient = createClient({
@@ -24,7 +24,7 @@ app.timer("dailyBackup", {
     const shareName = "fusebackups";
     const directoryName = "backups";
 
-    const account = "amexiofusebackup";
+    const account = "fusebackups";
     const accountKey = process.env.AZURE_FILES_ACCOUNT_KEY;
 
     const credential = new StorageSharedKeyCredential(account, accountKey);
